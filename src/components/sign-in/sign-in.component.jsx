@@ -17,6 +17,7 @@ const SignIn = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { email, password } = formFields;
 
+
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
     };
@@ -30,11 +31,10 @@ const SignIn = () => {
         e.preventDefault();
 
         try {
-            const response = await signInUserWithEmailAndPassword(
+            const { user } = await signInUserWithEmailAndPassword(
                 email,
                 password
             );
-            console.log(response);
             resetFormFields();
         } catch (error) {
             switch (error.code) {
